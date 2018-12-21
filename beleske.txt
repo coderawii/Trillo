@@ -1,0 +1,111 @@
+=========== 068 Why Flexbox_ An Overview of the Philosophy Behind Flexbox,
+=========== 069 A Basic Intro to Flexbox_ The Flex Container,
+=========== 070 A Basic Intro to Flexbox_ Flex Items,
+=========== 071 A Basic Intro to Flexbox_ Adding More Flex Items
+- Element na kom se koristi flex control se zove flex container, i on se kreira sa DISPLAY: FLEX ili FLEX-INLINE to je flex container koji se ponasa kao inline, ali on se skoro nikad ne koristi. Svi direknti childreni od flex containera su flex items. Pravac ovih flex-items je main axis ----> (kao x osa), imamo i cross axix (stelica na dole iliti y osa).
+- CONTAINER:
+  ---------
+    1. flex-direction: row ==> difoltni pr 12345___
+                       row-reverse ==> obrce red u odnosu na difoltni, u difoltnom ide sa leva na desno, ovde sa desna na levo, pr ___54321
+                       column ==> prikazuje iteme kao kolone, jedno ispod drugog, i tada main-axis postaje cross-axis i cross-axis postaje main-axis
+                       column-reverse ==> suprotno od column
+    flex-direction - u kom pravcu main axis ide (x)
+
+    2. flex-wrap: nowrap ==>
+                  wrap ==>
+                  wrap-reverse ==>
+    flex-wrap - definise da li flex-items treba da se wrapuju u novi red ukoliko nema vise dovoljno mesta u flex containeru ili ne
+    Recimo da dodamo veci broj itema, i kad krenemo da smanjujemo viewport, bilo bi dobro da se itemi koji ne stanu na trenutni viewport prelome u sledeci red, tj za container stavimo flex-wrap: wrap.
+    Kad povecamo visinu containera, i poveca se broj (a zbog wrapa i red) itema, bilo bi kul da se prostor izmedju redova smanji, za to koristimo (u containeru) align-content: flex-start, i sada je sadrzaj containera poravnat pri top-u
+
+    3. justify-content: flex-start ==>   |12345      |   difoltni
+                        flex-end ==>     |      12345|
+                        center ==>       |   12345   |   citav content je centriran 
+                        space-between ==>   |1  2  3  4  5|   ravnomerno prosiri items, sa medjusobnim jednakim prostorom, s tim sto prvi i poslednji item su priljubljeni uz ivice 
+                        space-around ==>    | 1  2  3  4  5 |   slicno kao i space-between s tim sto krajnji levi i krajnji desni itemi nisu priljubljeni uz levu tj desnu ivicu, vec i oni imaju prostor oko sebe, i taj prostor izmedju krajnjih itema i ivica je duplo manji od onog izmedju itema i itema 
+                        space-evenly ==>    | 1 2 3 4 5 |   slicno kao space-around, s tim sto je prostor izmedju svugde jeddan, i onaj izmedju ivice i itema   
+    justify-content - kako ce flex-items biti poravnati u pravu main axisa tj X ose
+
+    4. align-items: stretch ==>  difoltni, i ako recimo jedan od itema stavimo razlicit height, a-a, ipak ce svi itemi imati isti zbog stretch, znaci ko ima najveci height, po njemu i ostali dobijaju height, ovo kontam da je korisno ako imamo recimo 3 boxa, sa razlicitom kolicinom texta unutar svakog, i njihov height je onoliki koliko ima sadrzaja u njima, e pa, sa ovim strechom imace svi isti height (kao i najveci) bez obz na kolicinu sarzaja
+                    flex-start ==> bice poravnati po top-u   
+                    flex-end ==>  bice poravnati po bottom-u
+                    center ==>  centriramo po cros-axisu tj Y osi |
+                    baseline ==>  ravna po textu unutar itemsa, dakle itemi nisu poravnati po visini i sl, vec po textu unutar njih
+    align-items - slicno kao i justify-content, samo sto je ovo u cross axisu tj Y osi, i align-items i justify-content se ugl koriste zajedno, i najcesce
+
+    5. align-content: strech ==> difoltni, prilicno slicno kao i space-between
+                      flex-start ==>  stavlja se ugl u flex-container, poravna se content pri topu
+                      flex-end ==>  poravna se pri bottom-u
+                      center ==> 
+                      space-between ==>  isto kao za justify samo po Y osi, iliti TB iliti CROSS-AXISu, nema prostor item-TB
+                      space-around ==>  isto kao za justify samo po Y osi, iliti TB iliti CROSS-AXISu, ima prostor item-TB
+    align-content - koji se samo primenjuje kada postoji vise od jednog reda flex-itema, kako je poravnato u cross-axisu ako ima praznog prostora
+    Ravnanje contenta od parenta po TB pravcu, tj cross-axisu
+
+
+- ITEM:
+  ----
+    1. align-self: auto ==>
+                   strech ==> recimo ako imamo vise itema sa razlicitom visinom, i sad zelimo da samo jedan bude sa istom visinom kao najvisi, stavimo stretch tom itemu
+                   flex-start ==>
+                   flex-end ==>
+                   center ==>
+                   baseline ==>
+    align-self - slicno kao i align-items, ali samo za jedan poseban item. Recimo stavili smo za items da budu align: center, ali samo za jednog zelimo da bude recimo bottom
+
+    2. order: 0
+              <integer>
+    order - koji po redu je neki item, vrlo korisno za manje screens
+    imamo    | 1 2 3 4 5 | i za recimo 4 stavimo order: -1, on postaje prvi u redu | 4 1 2 3 5 |, a ostali imaju 0, dakle 4 ima najmanji broj, tj -1, ostali 0, a posto flexbox broji od najmanjeg postavice ih tako (-1 0 0 0 0).
+    Isto tako, ako za recimo 3 stavimo najveci order, on ce biti na kraju u redu  | 4 1 2 5 3 |
+
+    3. flex-grow: 0
+                  <integer>
+    flex-grow - pomaze flexboxu da odredi width za items. Definisemo koliko item moze da raste
+    Ako ga stavimo za items, svaki item ce da zauzme mesta koliko god moze, ali sve jednako, broj nije bitan u smislu ako je veci broj, vise ce da zauzme, vec jednako, jedino ako jednom stavimo veci/manji broj nego u ostalima, onda da, recimo za items stavimo flex-grow: 1, a za i2 stavimo flex-grow: 2; on ce biti duplo veci od ostalih, ili 3, onda 3x veci, itd.
+    Inace, moze i skraceno sa: flex: 1; ili flex: 2; Ili, ako ni jedan item nema definisan flex, osim recimo i3 koji ima flex: 1; on ce zauzeti svo preostalo mesto
+
+    4. flex-shrink: 0
+                    <integer>
+    flex-shrink - pomaze flexboxu da odredi width za items. Definisemo koliko item moze da se shrinkuje tj skupi
+    Recimo, kada smanjujemo viewport tj velicinu screena, smanjuju se i oni sto smo im stavili flex-basis i flex-grow jer oni se ponasaju (smanjuju, povecavaju) u zavisnosti koliko slobodnog prostora ima. Medjutim, nekad ne zelimo da se ti itemi smanjuju, vec da ostanu isti bez obz na velicinu screen-a, zato koristimo flex-shrink
+    Naime, difoltni flex-shrink je 1 (flex-shrink: 1;), tj elementu je dozvoljeno da se skupi, a ako ne zelimo da se elementi skupljaju, stavimo da je flex-shrink: 0
+
+    5. flex-basis: auto
+                   <length>
+    flex-basis - pomaze flexboxu da odredi width za items. Definisemo kolika je base width
+    On ugl sluzi sa meru za width, recimo ako za i2 stavimo flex-basis: 20%, on ce zauzeti 20% od parenta, smanjice se potom i onaj i3 sto ima flex: 1 sto zauzima preostali prostor, ostali imaju difoltni tj auto
+    
+    - za flex-grow, flex-shrink i flex-basis postoji kraci zapis - flex: 0 1 auto; tj flex: <flex-grow> <flex-shrink> <flex-basis>
+
+
+
+=========== 072 Project Overview - npm install
+Kopiramo package.json iz natoursa, promenimo neke stvari kao sto je concat koji ovde necemo imati, tj obrisemo ga gde god ima, promenimo name i description, i potom u trillo folderu: npm install           da bi instalirali sve ovo odjednom
+
+
+
+=========== 073 Defining Project Settings and Custom Properties
+Ovde necemo koristiti sass variables, vec nove css custom properties, iliti css varijable.
+Da bi mogli koristiti varijable svugde u projektu, ucitavamo ih u selektoru
+:root { --color1: #fff; }, a pozivaju se sa:
+color: var(--color1)
+
+
+
+=========== 075 Building the Header - Part 1,
+Zasto koristiti SVG icons vs font icons
+Kako pronaci, generisati i koristiti SVG sprites u HTML-ucitavamo
+Kako promeniti boju SVG ikonici u CSS-u
+Kako koristiti napredniji flexbox alignment tehnike, koristeci JUSTIFY-CONTENT, ALIGN-ITEMS, ALIGN-SELF i FLEX.
+- Zasto je bolje koristiti SVG ICONS umesto FONT ICONS:
+    font icons cesce fejluju i onda u browseru budu prikazani kao crni kvadratici i sl, ili screen readers za slepe ljude pokusavaju da procitaju nase icon fonts ali fejluju, tako da je vreme da sa icon fonts predjemo na bolje a to je SVG icons
+
+SVG - Scalable Vector Graphics, takoreci 'crtanje' vektor grafika kodom, ali mi to necemo raditi, vec cemo koristiti ICONMOON.IO
+Mnogo bitan fajl koji smo dw je symbol-defs.svg koji sadrzi sve ove svg icons sto smo skinuli, dakle 10u1, i time imamo samo 1 http request, umesto 10 (koliko i imamo svg ikonica), i treba nam demo.html cisto da vidimo imena ovih ikonica. Preimenovali smo symbol-defs.svg u sprite.svg
+
+=========== 076 Building the Header - Part 2
+
+
+
+===========
