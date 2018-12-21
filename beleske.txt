@@ -104,8 +104,15 @@ Kako koristiti napredniji flexbox alignment tehnike, koristeci JUSTIFY-CONTENT, 
 SVG - Scalable Vector Graphics, takoreci 'crtanje' vektor grafika kodom, ali mi to necemo raditi, vec cemo koristiti ICONMOON.IO
 Mnogo bitan fajl koji smo dw je symbol-defs.svg koji sadrzi sve ove svg icons sto smo skinuli, dakle 10u1, i time imamo samo 1 http request, umesto 10 (koliko i imamo svg ikonica), i treba nam demo.html cisto da vidimo imena ovih ikonica. Preimenovali smo symbol-defs.svg u sprite.svg
 
+<svg class="user-nav__icon">
+    <use xlink:href="img/sprite.svg#icon-bookmark"></use>
+</svg>
+
+
+
 =========== 076 Building the Header - Part 2
+Boju SVG ikonice menjamo sa fill: boja;
 
 
-
-===========
+=========== 077 Building the Header - Part 3
+Proveri u kodu, ovako bez koda ne vredi opisivati.

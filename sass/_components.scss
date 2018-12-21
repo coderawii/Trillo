@@ -2,6 +2,7 @@
 // LOGO
 .logo {
     height: 3.25rem;
+    margin-left: 2rem;
 }
 
 
@@ -9,17 +10,57 @@
 /////////////////////////////////////////////////////////
 // SEARCH
 .search {
-    &__input {
+    // background-color: orangered;
+    flex: 0 0 40%; // ne zelimo da raste, ne zelimo da se skuplja, zelimo da zauzme 40% od viewporta
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    &__input {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        width: 90%; // nismo stavili 100% jer ce biti 100% kad stavimo :focus efekat, i animiracemo to
+        transition: all .2s;
+        margin-right: -3.25rem; // da izgleda kao da je unutar inputa
+
+        &:focus {
+            outline: none;
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    &__input:focus + &__button {
+        background-color: var(--color-grey-light-3);
     }
 
     &__button {
+        border: none;
+        background-color: var(--color-grey-light-2);
 
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
     }
 
     &__icon {
         height: 2rem;
         width: 2rem;
+        fill: var(--color-grey-dark-3); // menjamo boju SVG iconcice
     }
 }
 
@@ -28,29 +69,56 @@
 /////////////////////////////////////////////////////////
 // USER-NAV
 .user-nav {
-    &__icon-box {
+    // background-color: greenyellow;
+    align-self: stretch; // ne zelimo da navbar bude vertikalno centriran (sto smo ucinili sa stavljanjem align-items: center u header-u), zato stavljamo stretch za ovaj element, odnosno prostire se od gornje ivice headera do donje sada
 
+    display: flex;
+    align-items: center;
+
+    & > * { // selektujemo samo direktne childrene od .user-nava
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%; // da bi za potrebe hovera efekat isao od gornje ivice headera (tj user-nava) do donje
+        display: flex;
+        align-items: center;
+    }
+
+    & > *:hover {
+        background-color: var(--color-grey-light-2);
+    }
+
+    &__icon-box { // premestili u direct childrene
+        // display: flex;
+        // align-items: center;
+        position: relative;
     }
 
     &__icon {
         height: 2.25rem;
         width: 2.25rem;
+        fill: var(--color-grey-dark-2);
+        
     }
 
     &__notification {
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
 
-    }
-
-    &__user {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__user-photo {
         height: 3.75rem;
         border-radius: 50%;
-    }
-
-    &__user-name {
-
+        margin-right: 1rem;
     }
 }
