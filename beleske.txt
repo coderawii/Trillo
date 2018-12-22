@@ -225,6 +225,18 @@ Zasto koristiti css maske sa MASK-IMAGE i MASK-SIZE
 
 
 =========== 084 Building the User Reviews Section
+&::before { content: "\201C" }   - kao html entites sa &ldquo;, ali ovde koristimo ISOnum, tj \201C
+.user-reviews {
+    flex: 1; - da zauzme svo ostalo mesto
+
+    // text-align: center; - ali centriran je sav text u reviews, a ne samo buttton sto zapravo zelimo, zato cemo koristiti align-items, stavicemo containeru da je flex, onda promeniti             flex-direction u column, a onda koristiti align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; - da ovo nismo stavili, bio bi difoltni a to je stretch, a on razvlaci element od ivice do ivice, a onda bi button imao border-bottom od ivice do ivice sto svakako ne zelimo
+}
+
+
 
 
 =========== 085 Building the CTA Section
+Mnogo kul btn HOVER efekat.

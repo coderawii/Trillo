@@ -297,8 +297,17 @@
     cursor: pointer;
     transition: all .2s;
 
+    span {
+        margin-left: 3px;
+        transition: margin-left .2s; // ne ide all jer se desava neki cudan efekat, kao da prvo hoveruje text pa rarr strelicu
+    }
+
     &:hover {
         color: var(--color-grey-dark-1);
+
+        span {
+            margin-left: 8px;
+        }
     }
     &:focus {
         outline: none;
@@ -329,7 +338,7 @@
 //////////////////////////////////////////
 // PARAGRAPH
 .paragraph:not(:last-of-type) { // ne koristimo last-child jer to nije last-child, al jeste last-of-type
-    margin-bottom: 2rem
+    margin-bottom: 2rem;
 }
 
 
@@ -402,3 +411,75 @@
         }
     } // photo i count nisu u istoj liniji jer su oboje block elementi, al problem resen sa display: flex
 }
+
+
+
+
+
+
+
+//////////////////////////////////////////
+// REVIEW
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    &__user-box {
+        margin-right: auto; // user-boxu damo margin-right auto i onda on time pushne __rating element u desno
+    }
+
+    &__user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+
+    &__user-date {
+        font-size: 1rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__rating {
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+
+    &::before {
+        content: "\201C"; // kao html entites sa &ldquo;, ali ovde koristimo ISOnum, tj \201C
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1; // jer je nesto glomazno 
+        font-size: 20rem;
+        color: var(--color-grey-light-2);
+        font-family: sans-serif;
+        z-index: 1;
+    }
+}
+
+
+

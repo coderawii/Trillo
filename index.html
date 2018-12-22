@@ -100,6 +100,8 @@
 
 
                 <main class="hotel-view">
+
+
                     <div class="gallery">
                         <figure class="gallery-item">
                             <img src="img/hotel-1.jpg" alt="Photo of hotel 1" class="gallery__photo" />
@@ -152,9 +154,10 @@
                     <div class="detail">
                         <!-- levo -->
                         <div class="description">
-                            <p class="parargaph">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus impedit laboriosam, inventore corrupti reiciendis quia neque repellendus ratione nisi quis, vero obcaecati libero sint beatae dignissimos qui architecto ex minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi enim quam natus ut iure libero hic molestiae, sint accusamus provident obcaecati.
-
+                            <p class="paragraph">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus impedit laboriosam, inventore corrupti reiciendis quia neque repellendus ratione nisi quis, vero obcaecati libero sint beatae dignissimos qui architecto ex minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi enim quam natus ut iure libero hic molestiae, sint accusamus provident obcaecati
+                            </p>
+                            <p class="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et delectus veritatis aperiam ex dolorum magnam, deleniti ipsam adipisci quas maxime impedit quo sed, eos nobis unde! Eos ipsum sunt tempora?
                             </p>
 
@@ -184,14 +187,42 @@
 
                         <!-- desno -->
                         <div class="user-reviews">
-                            User reviews
-                        </div>
+                            <!-- u ovom slucaju koristicemo <figure></figure>, mnogi misle da je ovo samo za slike, medjutim, odlicne su za neki text i opisne slike -->
+                            <figure class="review">
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda exercitationem reiciendis, esse provident quia tenetur odio architecto aperiam aliquid hic, magnam optio praesentium natus est
+                                </blockquote>
+                                <figcaption class="review__user">
+                                    <img src="img/user-1.jpg" alt="User 1" class="review__photo" />
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Nick Smith</p>
+                                        <p class="review__user-date">Feb 23rd, 2017</p>
+                                    </div>
+                                    <div class="review__rating">7.8</div>
+                                </figcaption>
+                            </figure>
+
+                             <figure class="review">
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda exercitationem reiciendis, esse provident quia tenetur odio architecto aperiam aliquid
+                                </blockquote>
+                                <figcaption class="review__user">
+                                    <img src="img/user-2.jpg" alt="User 2" class="review__photo" />
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Marry Thomas</p>
+                                        <p class="review__user-date">Sept 13th, 2017</p>
+                                    </div>
+                                    <div class="review__rating">9.3</div>
+                                </figcaption>
+                            </figure>
+
+                            <button class="btn-inline">Show all <span>&rarr;</span> </button>
+                        </div>  <!-- end user-reviews -->
+
                         
                     </div> <!-- end detail -->
-
-
                 </main>
-            </div>
+           
         </div>
 
     </body>
