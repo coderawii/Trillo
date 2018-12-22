@@ -222,7 +222,7 @@
     display: flex;
     // justify-content: space-between; // nije dobro resenje, dodajemo margin-rigth: auto; u stars sto je bolje resenje za efekat koji hocemo da postignemo
     align-items: center;
-    border-bottom: 1px solid var(--color-grey-light-2);
+    border-bottom: var(--line);
 
     &__heading {
         font-size: 2.25rem;
@@ -322,4 +322,83 @@
         transform: scale(1);
         box-shadow: none;
     }
+}
+
+
+
+//////////////////////////////////////////
+// PARAGRAPH
+.paragraph:not(:last-of-type) { // ne koristimo last-child jer to nije last-child, al jeste last-of-type
+    margin-bottom: 2rem
+}
+
+
+
+//////////////////////////////////////////
+// LIST
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex; // izgleda uzasno samo sa ovim
+    flex-wrap: wrap; // zato smo s ovim popravili malo, tj nemamo prevelik razmak izmedju list__item, ali dodacemo list-item fixed sirinu (ne width nego preko flexa), pa ce se to popraviti
+
+    &__item {
+        flex: 0 0 50%; // 50% je jer zelimo da imamo 2 elementa jedan pored drugog
+        margin-bottom: .7rem;
+    }
+
+    &__item::before { // odmah pre item-a, stavljamo svg ikonicu
+        content: "";
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        margin-right: .7rem;
+
+        // older browsers
+        // background-image: url("../img/svg/chevron-thin-right.svg"); // kada inkludujemo kao background-image, ne mozemo da menjamo boju, i tu stupa na snagu mask
+        // background-size: cover;
+
+        //newer browsers - mask, i ovde cemo kasnije raditi @supports
+        // mask - definise oblast gde mozemo da gledamo kroz element, i vidimo sta je iza tog elementa, tj stavicemo b-color ovog elementa u solid color i onda koristiti ikonicu kao masku i mocicemo da vidimo kroz tu masku i videti b-color u oblasti gde je ikonica, a sve ostalo je prekriveno, tj bice belo, kao neki cliping
+        background-color: var(--color-primary); // sad izgleda kao da imamo roze kvadratice
+        -webkit-mask-image: url("../img/svg/chevron-thin-right.svg");
+        -webkit-mask-size: cover; // poput background-size
+        mask-image: url("../img/svg/chevron-thin-right.svg");
+        mask-size: cover;
+
+    }
+}
+
+
+// dosta je svg ikonica ucitano preko html, zato cemo sad preko css-u, sto je mnogo teze, ali ovde cemo koristiti single svg ikonicu, tako da nece biti tako tesko, ne ucitavamo preko sprite-a valjda
+
+//////////////////////////////////////////
+// RECOMMEND
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+
+    &__count {
+        margin-right: auto; // ovim kao da je gurnuo u desno citav element sa slikama u desno, a to se valjda desava jer ovaj count dobije margin sa desne stranes
+    }
+
+    &__photo {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff; // ali border ide unutar slika, umessto sa spoljne str da bude, ali tu stupa na stranu box-sizing, i ovo se desava jer je on u resetu stavljen na border-box, sad cemo promeniti za ovaj element da bude na content-box
+        box-sizing: content-box;
+
+        &:not(:last-child) {
+            margin-right: -1.5rem; // da slika bude jedna ispod druge, al treb da dodamo i border
+        }
+    } // photo i count nisu u istoj liniji jer su oboje block elementi, al problem resen sa display: flex
 }

@@ -151,7 +151,7 @@ fill: currentColor; boja trenutnog elementa, ili parent elementa, mnogo korisna 
 =========== 080 Building the Hotel Overview - Part 1
  &__stars {
     // flex: 1; // ovim zvezdice zauzimaju najveci deo, i previse, zapravo nam treba da okupira prostor koliki je njen content, jer recimo da nam treba neki hover, ne zelimo da promenimo sve to
-    margin-right: auto; // ovo je ucinilo ono sto nam treba, zvezdice su odmah pored Hotel Palas, i sirine su koliki je i sadrzaj, tj kolike su i one !!!! margin-right: auto je vrlo korisno sa flexboxom
+    margin-right: auto; // ovo je ucinilo ono sto nam treba, zvezdice su odmah pored Hotel Las Palmas, i sirine su koliki je i sadrzaj, tj kolike su i one !!!! margin-right: auto je vrlo korisno sa flexboxom
 }
 
 =========== 081 Building the Hotel Overview - Part 2
@@ -186,13 +186,45 @@ align-self: stretch; - da se ovaj div razvuce skroz od gornje do donje ivice, ti
 }
 
 
-===========
+=========== 082 Building the Description Section - Part 1
+=========== 083 Building the Description Section - Part 2
+FLEX-WRAP za kreiranje visekolonske liste
+Zasto koristiti css maske sa MASK-IMAGE i MASK-SIZE
+.paragraph:not(:last-of-type) - ne koristimo last-child jer to nije last-child, al jeste last-of-type
+.list {
+    display: flex; - izgleda uzasno samo sa ovim
+    flex-wrap: wrap; - zato smo s ovim popravili malo, tj nemamo prevelik razmak izmedju list__item, ali dodacemo list-item fixed sirinu (ne width nego preko flexa), pa ce se to popraviti
+}
+
+&__item { flex: 0 0 50%; - 50% je jer zelimo da imamo 2 elementa jedan pored drugog }
+- Dosta je svg ikonica ucitano preko html, zato cemo sad preko css-u, sto je mnogo teze, ali ovde cemo koristiti single svg ikonicu, tako da nece biti tako tesko, ne ucitavamo preko sprite-a valjda
+&__item::before { odmah pre item-a, stavljamo svg ikonicu
+        // older browsers
+        // background-image: url("../img/svg/chevron-thin-right.svg"); // kada inkludujemo kao background-image, ne mozemo da menjamo boju, i tu stupa na snagu mask
+        // background-size: cover;
+
+        // newer browsers - mask, i ovde cemo kasnije raditi @supports
+        // mask - definise oblast gde mozemo da gledamo kroz element, i vidimo sta je iza tog elementa, tj stavicemo b-color ovog elementa u solid color i onda koristiti ikonicu kao masku i mocicemo da vidimo kroz tu masku i videti b-color u oblasti gde je ikonica, a sve ostalo je prekriveno, tj bice belo, kao neki cliping
+        background-color: var(--color-primary); // sad izgleda kao da imamo roze kvadratice
+
+        -webkit-mask-image: url("../img/svg/chevron-thin-right.svg");
+        -webkit-mask-size: cover; // poput background-size
+        mask-image: url("../img/svg/chevron-thin-right.svg");
+        mask-size: cover;
+    }
+
+&__count { margin-right: auto; - ovim kao da je gurnuo u desno citav element sa slikama u desno, a to se valjda desava jer ovaj count dobije margin sa desne stranes }
+ &__photo { 
+    border: 3px solid #fff; - ali border ide unutar slika, umessto sa spoljne str da bude, ali tu stupa na stranu box-sizing, i ovo se desava jer je on u resetu stavljen na border-box, sad cemo              promeniti za ovaj element da bude na content-box
+    box-sizing: content-box;
+
+    &:not(:last-child) {
+        margin-right: -1.5rem; // da slika bude jedna ispod druge, al treba da dodamo i border
+    }
+ }
 
 
-===========
+=========== 084 Building the User Reviews Section
 
 
-===========
-
-
-===========
+=========== 085 Building the CTA Section
