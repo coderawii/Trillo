@@ -5,6 +5,12 @@
     box-shadow: var(--shadow-dark);
 
     min-height: 50rem;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .header {
@@ -16,10 +22,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap; // ako nema dovoljno mesta u flex containeru, ono se prelomi u drugi red, tj idfe ispod svega
+        height: 12rem;
+        align-content: space-around; // prostor izmedju gornjeg i donjeg reda tj logoa i onih ikonica, i searcha
+    }
 }
 
 .content {
     display: flex;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    }
 }
 
 .sidebar {
@@ -44,17 +60,35 @@
     padding: 4.5rem;
     background-color: var(--color-grey-light-1);
     border-bottom: var(--line);
+
+    @media only screen and (max-width: $bp-medium) { // prvo ide za veci screen, pa za manji
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column; // .description i .user-reviews nisu vise jedan pored drugog, vec jedan ispod drugog
+    }
 }
 
-.description {
+.description { // levo
     background-color: #fff;
     box-shadow: var(--shadow-light);
     padding: 3rem;
     flex: 0 0 60%;
     margin-right: 4.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
 }
 
-.user-reviews {
+.user-reviews { // desno
     // background-color: yellowgreen;
     flex: 1; // da zauzme svo ostalo mesto
 

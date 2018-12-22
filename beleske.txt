@@ -253,3 +253,18 @@ Mnogo kul btn HOVER efekat.
 }
 &:hover &__invisible { top: 0; }
 &:hover &__visible { transform: translateY(100%) } - necemo koristiti top jer nismo koristili absolute position na __visible, i umesto toga koristimo transform: translateY(100%)
+
+
+
+=========== 086 Writing Media Queries - Part 1
+za breakpointove ovaj x cemo koristiti tacno one tacke gde se dizajn raspada, tj perfect media queries
+
+
+
+=========== 088 Wrapping up the Trillo Project_ Final Considerations
+CHALLENGES:
+1. Display some kind of user menu when hovering over the username in .user-nav 
+2. Display a message menu when hovering over the chat in .user-nav (maybe like fb)
+3. Displaya box with search suggestions as soon as the user starts typing in the search field
+4. Create a caption for the .gallery__item with a nice hover effect
+5. Make the page 100% responsive even for viewport sizes below 500px, maybe even responsive images 
