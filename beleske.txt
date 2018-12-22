@@ -148,7 +148,42 @@ fill: currentColor; boja trenutnog elementa, ili parent elementa, mnogo korisna 
 
 
 
-===========
+=========== 080 Building the Hotel Overview - Part 1
+ &__stars {
+    // flex: 1; // ovim zvezdice zauzimaju najveci deo, i previse, zapravo nam treba da okupira prostor koliki je njen content, jer recimo da nam treba neki hover, ne zelimo da promenimo sve to
+    margin-right: auto; // ovo je ucinilo ono sto nam treba, zvezdice su odmah pored Hotel Palas, i sirine su koliki je i sadrzaj, tj kolike su i one !!!! margin-right: auto je vrlo korisno sa flexboxom
+}
+
+=========== 081 Building the Hotel Overview - Part 2
+margin-right: auto; - ovo je ucinilo ono sto nam treba, zvezdice su odmah pored Hotel Las Palmas, i sirine su koliki je i sadrzaj, tj kolike su i one !!!! margin-right: auto je vrlo korisno sa flexboxom
+
+align-self: stretch; - da se ovaj div razvuce skroz od gornje do donje ivice, tipa svi ovi elementi zbog align-items: center su centralno postavljeni, ali ovaj overvritujemo sa stretchom
+.btn-inline { 
+    font-size: inherit; - da nasledi font-size svog parenta, naime, u ovom projektu imacemo 2 ovakva btn-a, samo sto ovaj dole Show all ce biti veceg fonta, al on ce inhertovati tj naslediti sizes svog parenta, i ovaj gore Albufeira, Portugal ce naslediti od svog parenta
+    border-bottom: 1px solid currentColor; - sa currentColorom na hover i border promeni boju u koju i text, bez currentColor-a bi morali da dodamo i boju za border-bottom za hover 
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite; - infinite znaci da dokle god je dugme u fokusu ono izgleda kao da pulsira, tj animacija se ponavlja
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
 
 
 ===========
@@ -159,7 +194,5 @@ fill: currentColor; boja trenutnog elementa, ili parent elementa, mnogo korisna 
 
 ===========
 
-
-===========
 
 ===========
