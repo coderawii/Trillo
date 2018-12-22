@@ -26,11 +26,18 @@
     background-color: var(--color-grey-dark-1);
 
     flex: 0 0 18%; // <grow> <shrink> <basis>
+
+    display: flex;
+    flex-direction: column; // nije vise row jer zelimo da ravnamo od topa do bottoma, a ne of left to right, pa smo red pretvorili u kolonu
+    justify-content: space-between; // i sada ovo deluje u Y osi, jer smo red pretvorili u kolonu sa flex-direction: column
 }
 
 .hotel-view {
     background-color: #fff;
+
+    //test
     background-color: orangered;
+    height: 80rem;
 
     flex: 1; // element raste koliko god ima mesta za rast
 }

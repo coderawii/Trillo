@@ -109,10 +109,57 @@ Mnogo bitan fajl koji smo dw je symbol-defs.svg koji sadrzi sve ove svg icons st
 </svg>
 
 
-
 =========== 076 Building the Header - Part 2
 Boju SVG ikonice menjamo sa fill: boja;
 
-
 =========== 077 Building the Header - Part 3
 Proveri u kodu, ovako bez koda ne vredi opisivati.
+
+
+
+=========== 078 Building the Navigation - Part 1
+Kako koristiti SCALEY i vise transition propertyja sa razlicitim podesavanjima da bi kreirali kreativan hover effect.
+Kako i zasto koristiti CURRENTCOLOR css varijablu.
+Kako koristiti neke napredne flexbox alignment tehnika ukljucujuci FLEX-DIRECTION, JUSTIFY-CONTENT i ALIGN-ITEMS
+.sidebar {
+    display: flex;
+    flex-direction: column; // nije vise row jer zelimo da ravnamo od topa do bottoma, a ne of left to right, pa smo red pretvorili u kolonu
+    justify-content: space-between; // i sada ovo deluje u Y osi, jer smo red pretvorili u kolonu sa flex-direction: column
+ }
+
+=========== 079 Building the Navigation - Part 2
+fill: currentColor; boja trenutnog elementa, ili parent elementa, mnogo korisna stvar, i podrzava ga dosta browsera.
+- ne zaboravi, z-index ne radi bez definisanog position-a
+&__item::before { // to ce biti mala linija koja postaje vidljiva i siri se na hover 
+        ....
+        height: 100%;
+        width: 3px;
+        transform: scaleY(0); // tj nije vidljiva na linija s leve strane
+        // transform-origin: bottom; // linija se siri od dole ka gore
+        transition: transform .2s,
+                    width .4s cubic-bezier(1,0,0,1) .2s, // probaj bez ovoga da vidis na sta lici efekat, ovo mu dodje kao delay, tj .2s nakon transform-a
+                    background-color .1s;
+    }
+&__item:hover::before,
+&__item--active::before {
+    transform: scaleY(1); // zasto scaleY jer nam treba efekat od top do bottom-a, dakle izgleda ko da se ova linija sa leve strane povecava prema top-u i bottomu
+    width: 100%; // inicijalno je 3px, i kad hoverujemo bude 100%
+}
+
+
+
+===========
+
+
+===========
+
+
+===========
+
+
+===========
+
+
+===========
+
+===========
