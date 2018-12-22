@@ -1,5 +1,4 @@
-/////////////////////////////////////////////////////////
-// LOGO
+// LOGO  ================================================================= LOGO ================================================================= LOGO
 .logo {
     height: 3.25rem;
     margin-left: 2rem;
@@ -7,8 +6,7 @@
 
 
 
-/////////////////////////////////////////////////////////
-// SEARCH
+// SEARCH  ================================================================= SEARCH ================================================================= SEARCH
 .search {
     // background-color: orangered;
     flex: 0 0 40%; // ne zelimo da raste, ne zelimo da se skuplja, zelimo da zauzme 40% od viewporta
@@ -66,8 +64,7 @@
 
 
 
-/////////////////////////////////////////////////////////
-// USER-NAV
+// USER-NAV  ================================================================= USER-NAV ================================================================= USER-NAV
 .user-nav {
     // background-color: greenyellow;
     align-self: stretch; // ne zelimo da navbar bude vertikalno centriran (sto smo ucinili sa stavljanjem align-items: center u header-u), zato stavljamo stretch za ovaj element, odnosno prostire se od gornje ivice headera do donje sada
@@ -126,8 +123,7 @@
 
 
 
-//////////////////////////////////////////
-// SIDE NAVIGATION
+// SIDE-NAV  ================================================================= SIDE-NAV ================================================================= SIDE-NAV
 .side-nav {
     font-size: 1.4rem;
     list-style: none;
@@ -190,8 +186,7 @@
 
 
 
-//////////////////////////////////////////
-// SIDE NAVIGATION
+// LEGAL  ================================================================= LEGAL ================================================================= LEGAL
 .legal {
     font-size: 1.2rem;
     color: var(--color-grey-light-4);
@@ -202,9 +197,7 @@
 
 
 
-
-//////////////////////////////////////////
-// GALLERY
+// GALLERY ================================================================= GALLERY ================================================================= GALLERY  
 .gallery {
     display: flex;
 
@@ -215,9 +208,7 @@
 }
 
 
-
-//////////////////////////////////////////
-// HOTEL OVERVIEW
+// HOTEL OVERVIEW  ================================================================= HOTEL OVERVIEW ================================================================= HOTEL OVERVIEW 
 .overview {
     display: flex;
     // justify-content: space-between; // nije dobro resenje, dodajemo margin-rigth: auto; u stars sto je bolje resenje za efekat koji hocemo da postignemo
@@ -284,8 +275,7 @@
 
 
 
-//////////////////////////////////////////
-// BTN INLINE
+// BTN-INLINE  ================================================================= BTN-INLINE ================================================================= BTN-INLINE 
 .btn-inline {
     border: none;
     color: var(--color-primary);
@@ -335,16 +325,13 @@
 
 
 
-//////////////////////////////////////////
-// PARAGRAPH
+// PARAGRAPH  ================================================================= PARAGRAPH ================================================================= PARAGRAPH 
 .paragraph:not(:last-of-type) { // ne koristimo last-child jer to nije last-child, al jeste last-of-type
     margin-bottom: 2rem;
 }
 
 
-
-//////////////////////////////////////////
-// LIST
+// LIST  ================================================================= LIST ================================================================= LIST 
 .list {
     list-style: none;
     margin: 3rem 0;
@@ -385,8 +372,7 @@
 
 // dosta je svg ikonica ucitano preko html, zato cemo sad preko css-u, sto je mnogo teze, ali ovde cemo koristiti single svg ikonicu, tako da nece biti tako tesko, ne ucitavamo preko sprite-a valjda
 
-//////////////////////////////////////////
-// RECOMMEND
+// RECOMMEND  ================================================================= RECOMMEND ================================================================= RECOMMEND 
 .recommend {
     font-size: 1.3rem;
     color: var(--color-grey-dark-3);
@@ -399,6 +385,10 @@
         margin-right: auto; // ovim kao da je gurnuo u desno citav element sa slikama u desno, a to se valjda desava jer ovaj count dobije margin sa desne stranes
     }
 
+    &__friends {
+        display: flex;
+    }
+
     &__photo {
         height: 4rem;
         width: 4rem;
@@ -407,7 +397,7 @@
         box-sizing: content-box;
 
         &:not(:last-child) {
-            margin-right: -1.5rem; // da slika bude jedna ispod druge, al treb da dodamo i border
+            margin-right: -2rem; // da slika bude jedna ispod druge, al treb da dodamo i border
         }
     } // photo i count nisu u istoj liniji jer su oboje block elementi, al problem resen sa display: flex
 }
@@ -418,8 +408,7 @@
 
 
 
-//////////////////////////////////////////
-// REVIEW
+// REVIEW  ================================================================= REVIEW ================================================================= REVIEW 
 .review {
     background-color: #fff;
     box-shadow: var(--shadow-light);
@@ -483,3 +472,68 @@
 
 
 
+
+
+// CALL TO ACTION  ================================================================= CALL TO ACTION ================================================================= CALL TO ACTION 
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    &__book-now {
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+}
+
+
+// CALL TO ACTION BTN  ================================================================= CALL TO ACTION BTN ================================================================= CALL TO ACTION BTN 
+.btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative;
+    overflow: hidden; // i ovaj element .invisible je nestao, jer se kao nalazi van granica svog parenta tj .btn, a stavili smo overflow: hidden;
+    cursor: pointer;
+
+    & > * {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+
+    &__visible {
+        padding: 2rem 7.5rem;
+    }
+
+    &__invisible {
+        position: absolute;
+        padding: 2rem 0; //  padding: 2rem 7.5rem; ali je zbog ovog ispadalo, nije imao dovoljno prostora da nestane, ili nmp, za sad ostavljamo padding ovako, ali kasnije ce objasniti zasto ne valja
+        left: 0;
+        top: -100%; // po,era na gore za velicinu elementa, recimo da je 50px, on ce se podici 100% od toga tj 50px
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+    }
+
+    &:hover &__visible {
+        // necemo koristiti top jer nismo koristili absolute position na __visible, i umesto toga koristimo transform: translateY(100%)
+        transform: translateY(100%)
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}

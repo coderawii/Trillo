@@ -38,10 +38,6 @@
     flex: 1; // element raste koliko god ima mesta za rast
 }
 
-
-
-
-
 .detail {
     font-size: 1.4rem;
     display: flex;
@@ -62,7 +58,7 @@
     // background-color: yellowgreen;
     flex: 1; // da zauzme svo ostalo mesto
 
-    text-align: center; // ali centriran je sav text u reviews, a ne sam o buttton sto zapravo zelimo, zato cemo koristiti align-items, stavicemo containeru da je flex, onda promeniti flex-direction, a onda koristiti align-items: center;
+    // text-align: center; // ali centriran je sav text u reviews, a ne sam o buttton sto zapravo zelimo, zato cemo koristiti align-items, stavicemo containeru da je flex, onda promeniti flex-direction, a onda koristiti align-items: center;
     display: flex;
     flex-direction: column;
     align-items: center; // da ovo nismo stavili, bio bi difoltni a to je stretch, a on razvlaci element od ivice do ivice, a onda bi button imao border-bottom od ivice do ivice sto svakako ne zelimo

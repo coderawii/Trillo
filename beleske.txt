@@ -224,6 +224,7 @@ Zasto koristiti css maske sa MASK-IMAGE i MASK-SIZE
  }
 
 
+
 =========== 084 Building the User Reviews Section
 &::before { content: "\201C" }   - kao html entites sa &ldquo;, ali ovde koristimo ISOnum, tj \201C
 .user-reviews {
@@ -240,3 +241,15 @@ Zasto koristiti css maske sa MASK-IMAGE i MASK-SIZE
 
 =========== 085 Building the CTA Section
 Mnogo kul btn HOVER efekat.
+<button class="btn">
+    <span class="btn__visible">Book now</span>
+    <span class="btn__invisible">Only 4 rooms left</span>
+</button>
+.btn { ... overflow: hidden } - i ovaj element .invisible je nestao, jer se kao nalazi van granica svog parenta tj .btn, a stavili smo overflow: hidden;
+&__invisible {
+    position: absolute;
+    left: 0;
+    top: -100%; - pomera na gore za velicinu elementa, recimo da je 50px, on ce se podici 100% od toga tj 50px
+}
+&:hover &__invisible { top: 0; }
+&:hover &__visible { transform: translateY(100%) } - necemo koristiti top jer nismo koristili absolute position na __visible, i umesto toga koristimo transform: translateY(100%)

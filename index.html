@@ -13,6 +13,8 @@
     <body>
         
         <div class="container">
+
+
             <header class="header">
                 <img src="img/logo.png" alt="trillo logo" class="logo" />
 
@@ -25,7 +27,7 @@
                         </svg>
                     </button>
                 </form>
-
+            <!-- ======================== USER-NAV ======================== -->
                 <nav class="user-nav">
                     <div class="user-nav__icon-box">
                         <svg class="user-nav__icon">
@@ -46,11 +48,12 @@
                         <span class="user-nav__user-name">Jonas</span>
                     </div>
                 </nav>
+            <!-- ======================== END USER-NAV ======================== -->
             </header>
+<!-- ============================================ END HEADER ============================================ -->
 
 
-
-
+<!-- ============================================ CONTENT  ============================================ -->
             <div class="content">
                 <nav class="sidebar">
                     <ul class="side-nav">
@@ -98,7 +101,7 @@
 
 
 
-
+<!-- ============================================ HOTEL-VIEW  ============================================ -->
                 <main class="hotel-view">
 
 
@@ -114,6 +117,7 @@
                         </figure>
                     </div>
 
+                <!-- ======================== OVERVIEW  ======================== -->
                     <div class="overview">
                         <h1 class="overview__heading">
                             Hotel Las Palmas
@@ -147,12 +151,13 @@
                             <div class="overview__rating-average">8.6</div>
                             <div class="overview__rating-count">429 votes</div>
                         </div>
-                    </div>
+                    </div> <!-- end overview -->
+                <!-- ======================== END OVERVIEW ======================== -->
 
-
+                <!-- ======================== DETAIL  ======================== -->
                     <!-- container ovih divova pored side-bara -->
                     <div class="detail">
-                        <!-- levo -->
+                        <!-- ============== LEVO DECRIPTION ============== -->
                         <div class="description">
                             <p class="paragraph">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus impedit laboriosam, inventore corrupti reiciendis quia neque repellendus ratione nisi quis, vero obcaecati libero sint beatae dignissimos qui architecto ex minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi enim quam natus ut iure libero hic molestiae, sint accusamus provident obcaecati
@@ -184,8 +189,9 @@
                                 </div>
                             </div>
                         </div><!-- end description -->
+                        <!-- ============== END LEVO DECRIPTION ============== -->
 
-                        <!-- desno -->
+                        <!-- ============== DESNO USER-REVIEWS ============== -->
                         <div class="user-reviews">
                             <!-- u ovom slucaju koristicemo <figure></figure>, mnogi misle da je ovo samo za slike, medjutim, odlicne su za neki text i opisne slike -->
                             <figure class="review">
@@ -216,14 +222,30 @@
                                 </figcaption>
                             </figure>
 
-                            <button class="btn-inline">Show all <span>&rarr;</span> </button>
+                            <button class="btn-inline">Show all <span>&rarr;</span></button>
                         </div>  <!-- end user-reviews -->
-
+                        <!-- ============== END DESNO USER-REVIEWS ============== -->
                         
                     </div> <!-- end detail -->
-                </main>
-           
-        </div>
+                <!-- ======================== END DETAIL ======================== -->
 
+                <!-- ======================== CALL THE ACTION ======================== -->
+                    <div class="cta">
+                        <h2 class="cta__book-now">
+                            Good news! We have 4 free rooms for your selected dates!
+                        </h2>
+                        <button class="btn">
+                            <span class="btn__visible">Book now</span>
+                            <span class="btn__invisible">Only 4 rooms left</span>
+                        </button>
+                    </div>
+                <!-- ======================== END CALL THE ACTION ======================== -->
+                    
+
+                    
+                </main> <!-- end hotel-view -->
+           </div> <!-- end content -->
+<!-- ============================================ CONTENT END  ============================================ -->
+        </div> <!-- end container -->
     </body>
 </html>
